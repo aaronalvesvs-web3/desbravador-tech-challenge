@@ -12,14 +12,15 @@
   - [6. Execução](#6-execução)
     - [6.1. Configurar Variáveis de Ambiente](#61-configurar-variáveis-de-ambiente)
     - [6.2. Iniciar a Aplicação](#62-iniciar-a-aplicação)
-  - [7. Decisões Técnicas e Observações](#7-decisões-técnicas-e-observações)
-    - [7.1. Vite sem React](#71-vite-sem-react)
-    - [7.2. Hash Router próprio](#72-hash-router-próprio)
-    - [7.3. Componentização sem framework](#73-componentização-sem-framework)
-    - [7.4. Separação de estilos CSS por responsabilidade](#74-separação-de-estilos-css-por-responsabilidade)
-    - [7.5. Template literals com suporte a HTML](#75-template-literals-com-suporte-a-html)
-    - [7.6. Uso de !important no CSS](#76-uso-de-important-no-css)
-    - [7.7. Tipagem separada por arquivos](#77-tipagem-separada-por-arquivos)
+  - [7. Deploy](#7-deploy)
+  - [8. Decisões Técnicas e Observações](#8-decisões-técnicas-e-observações)
+    - [8.1. Vite sem React](#81-vite-sem-react)
+    - [8.2. Hash Router próprio](#82-hash-router-próprio)
+    - [8.3. Componentização sem framework](#83-componentização-sem-framework)
+    - [8.4. Separação de estilos CSS por responsabilidade](#84-separação-de-estilos-css-por-responsabilidade)
+    - [8.5. Template literals com suporte a HTML](#85-template-literals-com-suporte-a-html)
+    - [8.6. Uso de !important no CSS](#86-uso-de-important-no-css)
+    - [8.7. Tipagem separada por arquivos](#87-tipagem-separada-por-arquivos)
 
 ## 1. Descrição do Projeto
 Aplicação client-side desenvolvida em TypeScript que consome a API pública do GitHub e permite buscar perfis de usuários, visualizar seus repositórios ordenados por popularidade e acessar os detalhes de cada repositório.
@@ -71,25 +72,30 @@ npm run dev
 ```
 * A aplicação estará disponível em **http://localhost:5173**
 
-## 7. Decisões Técnicas e Observações
+## 7. Deploy
+O deploy da aplicação foi realizado na **Vercel** para facilitar os testes. Acesse através do link abaixo:
 
-### 7.1. Vite sem React
+* **[GitHub Explorer](https://desbravador-tech-challenge.vercel.app/#/)**
+
+## 8. Decisões Técnicas e Observações
+
+### 8.1. Vite sem React
 O **Vite** foi adotado exclusivamente como servidor de desenvolvimento e bundler. Ele não impõe nenhuma camada de UI, servindo apenas para compilar TypeScript e servir os arquivos em desenvolvimento.
 
-### 7.2. Hash Router próprio
+### 8.2. Hash Router próprio
 Foi implementado um **hash router próprio** em `src/router.ts` usando `window.location.hash` e `hashchange`, sem nenhuma biblioteca externa. O roteador suporta parâmetros dinâmicos (`:username`, `:repoName`) e um sistema de **render + mount assíncrono**: o HTML do esqueleto de carregamento é inserido imediatamente de forma síncrona, e então a função `mount` busca os dados da API e atualiza o DOM, garantindo feedback visual instantâneo ao usuário.
 
-### 7.3. Componentização sem framework
+### 8.3. Componentização sem framework
 Seguindo o princípio de componentização do React (blocos reutilizáveis), foram criados componentes em `src/components/` como funções TypeScript que retornam strings HTML. Os principais componentes são `Navbar.ts`, `RepoCard.ts` e `StatCard.ts`. Todos importados pelas páginas, evitando duplicidade no código.
 
-### 7.4. Separação de estilos CSS por responsabilidade
+### 8.4. Separação de estilos CSS por responsabilidade
 O CSS foi dividido em arquivos específicos por contexto: `globals.css` (variáveis, base, animações), `navbar.css`, `home.css`, `user-profile.css` e `repo-detail.css`. Essa separação facilita a manutenção e localização de estilos, além de comunicar claramente a qual parte da aplicação cada regra pertence.
 
-### 7.5. Template literals com suporte a HTML
+### 8.5. Template literals com suporte a HTML
 Como os componentes retornam strings de template literal TypeScript, o autocomplete nativo do editor não reconhece HTML dentro dessas strings. Para resolver isso, foi criado o utilitário `src/utils/html.ts` que exporta `export const html = String.raw`, usado como tag de template (`html\`...\``). A extensão **ES6 String HTML** do VSCode reconhece essa tag e ativa syntax highlighting e autocomplete de HTML dentro dos templates.
 
-### 7.6. Uso de !important no CSS
+### 8.6. Uso de !important no CSS
 A maioria das declarações `!important` foi necessária para sobrescrever os estilos internos do Bootstrap 5, que aplica regras com alta especificidade em classes como `.btn`, `.form-control`, `.navbar` e `.input-group-text`.
 
-### 7.7. Tipagem separada por arquivos
+### 8.7. Tipagem separada por arquivos
 Cada tipo / interface TypeScript possui seu próprio arquivo na pasta `src/types/`, seguindo a convenção `<nome>.types.ts`. Um arquivo `index.ts` (barrel) re-exporta todos os tipos, mantendo os imports das páginas e componentes simples (`from '../types'`). Essa estrutura torna a localização e manutenção das tipagens mais intuitiva à medida que o projeto cresce.
