@@ -23,3 +23,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Arquivos internos de desenvolvimento
+notas.md
+detalhes.md
+modelo.md

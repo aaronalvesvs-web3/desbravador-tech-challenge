@@ -1,6 +1,14 @@
-import './styles/globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <h1>Desbravador Tech Challenge</h1>
-`
+import './styles/globals.css';
 
+import './styles/navbar.css';
+import './styles/home.css';
+import './styles/user-profile.css';
+import './styles/repo-detail.css';
+
+import { initRouter } from './router';
+
+const app = document.querySelector<HTMLDivElement>('#app')!;
+initRouter(app);
