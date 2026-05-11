@@ -1,0 +1,100 @@
+.home-hero {
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(31, 111, 235, .13), transparent);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.hero-icon {
+  color: var(--gh-text);
+  filter: drop-shadow(0 0 28px rgba(31, 111, 235, .35));
+}
+
+.hero-title {
+  color: var(--gh-text);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+  color: var(--gh-muted) !important;
+}
+
+.search-wrapper {
+  width: 100%;
+  max-width: 560px;
+}
+
+.search-group {
+  background: var(--gh-surface);
+  border: 1px solid var(--gh-border);
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.search-group:focus-within {
+  border-color: var(--gh-accent);
+  box-shadow: 0 0 0 3px var(--gh-accent-subtle), var(--shadow-lg) !important;
+}
+
+.search-icon-wrap {
+  background-color: var(--gh-surface) !important;
+  border: none !important;
+  color: var(--gh-muted);
+  padding-left: 1rem;
+}
+
+.search-main-input {
+  background-color: var(--gh-surface) !important;
+  border: none !important;
+  color: var(--gh-text) !important;
+  font-size: 1rem !important;
+  padding: 0.9rem 0.75rem !important;
+}
+
+.search-main-input::placeholder {
+  color: var(--gh-muted) !important;
+}
+
+.search-main-input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.search-main-btn {
+  background-color: var(--gh-accent) !important;
+  border: none !important;
+  border-left: 1px solid rgba(255, 255, 255, .1) !important;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem !important;
+  border-radius: 0 !important;
+  transition: background-color var(--transition);
+}
+
+.search-main-btn:hover {
+  background-color: var(--gh-accent-hover) !important;
+}
+
+.suggestion-link {
+  color: var(--gh-accent);
+  text-decoration: none;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.8rem;
+  transition: color var(--transition);
+}
+
+.suggestion-link:hover {
+  color: var(--gh-accent-hover);
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .search-main-input::placeholder {
+    color: transparent !important;
+  }
+}

@@ -1,0 +1,67 @@
+.gh-navbar {
+  background-color: var(--gh-surface) !important;
+  border-bottom: 1px solid var(--gh-border);
+  padding: 0.625rem 0;
+}
+
+.gh-navbar .navbar-brand {
+  color: var(--gh-text) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+
+.gh-navbar .navbar-brand:hover {
+  opacity: 0.75;
+}
+
+.gh-navbar .nav-search-wrap {
+  flex: 1;
+  max-width: 360px;
+  margin: 0 1.5rem;
+}
+
+.gh-navbar .nav-search-input {
+  background-color: var(--gh-bg) !important;
+  border: 1px solid var(--gh-border) !important;
+  color: var(--gh-text) !important;
+  border-radius: var(--radius) !important;
+  font-size: 0.82rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.gh-navbar .nav-search-input::placeholder {
+  color: var(--gh-muted);
+}
+
+.gh-navbar .nav-search-input:focus {
+  border-color: var(--gh-accent) !important;
+  box-shadow: 0 0 0 3px var(--gh-accent-subtle) !important;
+  outline: none;
+}
+
+.gh-navbar .nav-search-btn {
+  background-color: var(--gh-green) !important;
+  border: none !important;
+  color: #fff !important;
+  font-size: 0.82rem !important;
+  font-weight: 500 !important;
+  padding: 0.3rem 0.85rem !important;
+  border-radius: var(--radius) !important;
+  transition: background-color var(--transition);
+}
+
+.gh-navbar .nav-search-btn:hover {
+  background-color: var(--gh-green-hover) !important;
+}
+
+@media (max-width: 768px) {
+  .gh-navbar .nav-search-wrap {
+    max-width: 100%;
+    margin: 0.5rem 0 0;
+  }
+}
